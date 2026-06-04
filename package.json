@@ -1,0 +1,23 @@
+{
+  "name": "pooja-vegetables",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "backend",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace=backend\" \"npm run dev --workspace=apps/dashboard\" \"npm run dev --workspace=apps/b2b\" \"npm run dev --workspace=apps/customer\"",
+    "dev:backend": "npm run dev --workspace=backend",
+    "dev:dashboard": "npm run dev --workspace=apps/dashboard",
+    "dev:b2b": "npm run dev --workspace=apps/b2b",
+    "dev:customer": "npm run dev --workspace=apps/customer",
+    "build:all": "npm run build --workspaces --if-present",
+    "types:build": "npm run build --workspace=packages/types",
+    "lint": "npm run lint --workspaces --if-present"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
