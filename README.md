@@ -1,6 +1,3 @@
-# Pooja_Vegetables
-Developed for my fruits and vegetables shop named Pooja Vegetables
-
 <div align="center">
 
 # 🥦 Pooja Vegetables
@@ -277,7 +274,7 @@ test:     add or update tests
 ## Roadmap
 
 - [x] Phase 1 — Monorepo scaffold, shared types, backend structure, all middleware
-- [ ] Phase 2 — Dad's dashboard (orders list, price editor, stat cards)
+- [ ] Phase 2 — Owner's dashboard (orders list, price editor, stat cards)
 - [ ] Phase 3 — PDF bill generation + Cloudinary upload + WhatsApp sharing
 - [ ] Phase 4 — B2B portal (login, bulk order form, order history)
 - [ ] Phase 5 — Customer PWA (geolocation, cart, order tracking)
