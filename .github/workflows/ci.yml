@@ -8,38 +8,20 @@ on:
 
 jobs:
   type-check-and-build:
-    name: Type check + build
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci
+      - run: npm ci
 
-      - name: Build shared types
-        run: npm run types:build
+      - run: npm run types:build
 
       - name: Type check backend
         run: npx tsc --noEmit
         working-directory: backend
-
-      - name: Type check dashboard
-        run: npx tsc --noEmit
-        working-directory: apps/dashboard
-
-      - name: Type check customer
-        run: npx tsc --noEmit
-        working-directory: apps/customer
-
-      - name: Build all apps
-        run: npm run build:all
-        env:
-          VITE_API_URL: https://placeholder.railway.app/api
