@@ -118,7 +118,7 @@ export interface PriceHistoryEntry {
   productName: string     // denormalized
   priceRetail: number
   priceBulk: number
-  recordedAt: string      // ISO timestamp of when prices were saved
+  recordedAt: Date        // Date in DB — serialises to ISO string in API responses
   recordedBy: string      // admin user id
 }
 

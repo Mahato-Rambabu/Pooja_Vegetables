@@ -1,14 +1,18 @@
 import { Router, Request, Response } from 'express'
-import jwt from 'jsonwebtoken'
-import { B2BClientModel } from '../models/user.model'
-import { UserModel } from '../models/user.model'
+import jwt, { SignOptions } from 'jsonwebtoken'
+import { B2BClientModel, UserModel } from '../models/user.model'
 
 const router = Router()
 
 const signToken = (payload: object): string => {
   const secret = process.env['JWT_SECRET']
   if (!secret) throw new Error('JWT_SECRET not set')
-  return jwt.sign(payload, secret, { expiresIn: process.env['JWT_EXPIRES_IN'] ?? '7d' })
+
+  // expiresIn must satisfy jsonwebtoken's StringValue type — cast explicitly
+  const options: SignOptions = {
+    expiresIn: (process.env['JWT_EXPIRES_IN'] ?? '7d') as SignOptions['expiresIn'],
+  }
+  return jwt.sign(payload, secret, options)
 }
 
 // ── POST /api/auth/b2b/login ──────────────────
